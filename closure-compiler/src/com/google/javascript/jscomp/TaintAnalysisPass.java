@@ -89,6 +89,7 @@ class TaintAnalysisPass implements CompilerPass , ScopedCallback {
     // declarations to perform dataflow analysis on. We could combine
     // the traversal in DataFlowAnalysis's computeEscaped later to save some
     // time.
+
   }
   @Override
   public void process(Node externs, Node root) {
