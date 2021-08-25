@@ -508,7 +508,14 @@ public final class DefaultPassConfig extends PassConfig {
   @Override
   protected List<PassFactory> getOptimizations() {
     List<PassFactory> passes = new ArrayList<>();
-
+   //ANITA
+    passes.add(
+            PassFactory.builder()
+                    .setName("TaintAnalysisPass")
+                    .setInternalFactory(TaintAnalysisPass::new)
+                    .setFeatureSet(FeatureSet.ES2019_MODULES)
+                    .build());
+    //Anita End
     if (options.skipNonTranspilationPasses) {
       return passes;
     }
@@ -588,6 +595,13 @@ public final class DefaultPassConfig extends PassConfig {
     }
 
     assertAllOneTimePasses(passes);
+//ANITA Start
+/*    passes.add(
+            PassFactory.builder()
+                    .setName("helloWorld")
+                    .setInternalFactory(HelloWorld::new)
+                    .setFeatureSet(FeatureSet.ES2019_MODULES)
+                    .build());*/
 
     // Inline aliases so that following optimizations don't have to understand alias chains.
     if (options.getPropertyCollapseLevel() == PropertyCollapseLevel.ALL) {
