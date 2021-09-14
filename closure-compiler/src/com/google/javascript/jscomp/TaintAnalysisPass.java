@@ -102,8 +102,11 @@ class TaintAnalysisPass implements CompilerPass , ScopedCallback {
 
       public String getOutputFileName(NodeTraversal traversal) {
           String orgFileName = traversal.getSourceName();
-          String outputFileName = orgFileName.substring(0, orgFileName.lastIndexOf("/") + 1) + "Output.json";
-          return outputFileName;
+          String outputFileNamepath = orgFileName.substring(0, orgFileName.lastIndexOf("/") + 1);
+          String outputFileName = orgFileName.substring(orgFileName.lastIndexOf("/") + 1,orgFileName.lastIndexOf("."));
+           outputFileName = outputFileName + "_out.json";
+           outputFileNamepath = outputFileNamepath + outputFileName;
+          return outputFileNamepath;
       }
 
 
